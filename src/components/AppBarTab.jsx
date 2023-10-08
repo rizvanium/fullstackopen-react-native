@@ -3,9 +3,9 @@ import theme from '../theme';
 
 const styles = StyleSheet.create({
   text: {
-    color: theme.colors.textSecondary,
+    color: theme.colors.white,
     fontWeight: '700',
-    fontSize: 20,
+    fontSize: theme.fontSizes.heading,
   },
 });
 

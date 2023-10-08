@@ -1,7 +1,24 @@
 const theme = {
   colors: {
-    background: '#24292e',
-    textSecondary: '#ffffff',
+    primary: '#0366d6',
+    light: '#e1e4e8',
+    dark: '#24292e',
+    white: '#ffffff',
+    textPrimary: '#24292e',
+    textSecondary: '#586069',
+    textTernary: '#ffffff',
+  },
+  fontSizes: {
+    body: 14,
+    subheading: 16,
+    heading: 18,
+  },
+  fonts: {
+    main: 'System',
+  },
+  fontWeights: {
+    normal: '400',
+    bold: '700',
   },
 };
 
