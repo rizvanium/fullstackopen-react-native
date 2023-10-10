@@ -1,19 +1,49 @@
-import { Text, Pressable, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { useLocation, Link } from 'react-router-native';
+import Text from './Text';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
-  text: {
-    color: theme.colors.white,
-    fontWeight: '700',
-    fontSize: theme.fontSizes.heading,
+  link: {
+    padding: 8,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  selected: {
+    color: theme.colors.textPrimary,
+    backgroundColor: theme.colors.white,
   },
 });
 
-const AppBarTab = ({ name }) => {
+const useLinkStyles = (...paths) => {
+  const { pathname } = useLocation();
+
+  const pathToStyle = new Map();
+
+  paths.forEach((path) => {
+    pathToStyle.set(
+      path,
+      pathname === path ? [styles.link, styles.selected] : [styles.link]
+    );
+  });
+
+  return pathToStyle;
+};
+
+const AppBarTab = ({ name, to }) => {
+  const linkStyles = useLinkStyles(to);
+
   return (
-    <Pressable>
-      <Text style={styles.text}>{name}</Text>
-    </Pressable>
+    <Link to={to}>
+      <Text
+        fontSize="heading"
+        color="white"
+        fontWeight="bold"
+        style={linkStyles.get(to)}
+      >
+        {name}
+      </Text>
+    </Link>
   );
 };
 
