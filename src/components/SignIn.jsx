@@ -15,22 +15,23 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   inputBase: {
-    height: 64,
-    margin: 12,
+    height: 50,
+    margin: 8,
     padding: 10,
     fontSize: theme.fontSizes.heading,
     borderRadius: 4,
   },
   input: {
-    borderWidth: 1,
+    borderWidth: 2,
+    color: theme.colors.textSecondary,
+    borderColor: theme.colors.textSecondary,
   },
   submitButton: {
     fontWeight: theme.fontWeights.bold,
     backgroundColor: theme.colors.primary,
     color: theme.colors.white,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    textAlign: 'center',
+    textAlignVertical: 'center',
   },
 });
 
