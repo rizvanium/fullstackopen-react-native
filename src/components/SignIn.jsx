@@ -14,13 +14,18 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'white',
   },
-  submitButton: {
+  inputBase: {
     height: 64,
     margin: 12,
     padding: 10,
     fontSize: theme.fontSizes.heading,
-    fontWeight: theme.fontWeights.bold,
     borderRadius: 4,
+  },
+  input: {
+    borderWidth: 1,
+  },
+  submitButton: {
+    fontWeight: theme.fontWeights.bold,
     backgroundColor: theme.colors.primary,
     color: theme.colors.white,
     display: 'flex',
@@ -32,14 +37,22 @@ const styles = StyleSheet.create({
 const SignInForm = ({ onSubmit }) => {
   return (
     <View style={styles.container}>
-      <FormikTextInput name="username" placeholder="Enter username" />
+      <FormikTextInput
+        name="username"
+        placeholder="Enter username"
+        style={{ ...styles.input, ...styles.inputBase }}
+      />
       <FormikTextInput
         name="password"
         placeholder="Enter password"
         secureTextEntry
+        style={{ ...styles.input, ...styles.inputBase }}
       />
       <Pressable onPress={onSubmit}>
-        <Text fontSize="heading" style={styles.submitButton}>
+        <Text
+          fontSize="heading"
+          style={{ ...styles.submitButton, ...styles.inputBase }}
+        >
           Sign in
         </Text>
       </Pressable>
