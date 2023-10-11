@@ -7,11 +7,10 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'flex-start',
     backgroundColor: theme.colors.dark,
     height: Constants.statusBarHeight * 3,
-    padding: 20,
   },
 });
 
