@@ -15,9 +15,11 @@ const styles = StyleSheet.create({
 const FormikTextInput = ({ name, style, ...props }) => {
   const [field, meta, helpers] = useField(name);
   const showError = meta.touched && meta.error;
+
   if (showError) {
     style.borderColor = theme.colors.error;
   }
+
   return (
     <>
       <TextInput
