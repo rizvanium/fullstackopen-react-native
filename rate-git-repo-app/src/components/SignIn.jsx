@@ -5,6 +5,7 @@ import FormikTextInput from './FormikTextInput';
 import Text from './Text';
 import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
+import { useNavigate } from 'react-router-native';
 
 const initialValues = {
   username: '',
@@ -69,14 +70,16 @@ const SignInForm = ({ onSubmit }) => {
 };
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [signIn] = useSignIn();
 
   const onSubmit = async (values) => {
     const { username, password } = values;
     try {
       const { data } = await signIn({ username, password });
-      console.log('SignIn success block');
-      console.log(data);
+      if (data?.authenticate?.accessToken) {
+        navigate('/');
+      }
     } catch (error) {
       console.log('SignIn error block');
       console.log(error);
