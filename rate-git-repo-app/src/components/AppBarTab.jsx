@@ -30,16 +30,23 @@ const useLinkStyles = (...paths) => {
   return pathToStyle;
 };
 
-const AppBarTab = ({ name, to }) => {
+const AppBarTab = ({ name, to = '_nonexistent', style, onPress }) => {
   const linkStyles = useLinkStyles(to);
 
+  const handlePress = () => {
+    if (!onPress) {
+      return;
+    }
+    onPress();
+  };
+
   return (
-    <Link to={to}>
+    <Link to={to === '_nonexistent' ? null : to} onPress={handlePress}>
       <Text
         fontSize="heading"
         color="white"
         fontWeight="bold"
-        style={linkStyles.get(to)}
+        style={linkStyles.get(to).concat(style)}
       >
         {name}
       </Text>
