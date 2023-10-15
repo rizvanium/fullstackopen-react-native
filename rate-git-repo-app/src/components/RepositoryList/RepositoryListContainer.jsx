@@ -1,5 +1,6 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 import RepositoryItem from './RepositoryItem';
+import { Link } from 'react-router-native';
 
 const styles = StyleSheet.create({
   separator: {
@@ -8,6 +9,14 @@ const styles = StyleSheet.create({
 });
 
 const ItemSeparator = () => <View style={styles.separator} />;
+
+const PressableRepositoryItem = ({ item }) => {
+  return (
+    <Link to={`/repository/${item.id}`}>
+      <RepositoryItem item={item} />
+    </Link>
+  );
+};
 
 export const RepositoryListContainer = ({ repositories }) => {
   const repositoryNodes = repositories
@@ -18,7 +27,7 @@ export const RepositoryListContainer = ({ repositories }) => {
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={RepositoryItem}
+      renderItem={PressableRepositoryItem}
       keyExtractor={(item) => item.id}
     />
   );

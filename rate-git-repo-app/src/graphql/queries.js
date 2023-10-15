@@ -23,6 +23,26 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
+export const GET_REPOSITORY = gql`
+  query Repository($repositoryId: ID!) {
+    repository(id: $repositoryId) {
+      id
+      name
+      fullName
+      ownerName
+      reviewCount
+      createdAt
+      ratingAverage
+      stargazersCount
+      forksCount
+      description
+      language
+      ownerAvatarUrl
+      url
+    }
+  }
+`;
+
 export const ME = gql`
   query Me {
     me {
