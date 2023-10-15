@@ -1,6 +1,7 @@
 import { View, Image, StyleSheet } from 'react-native';
 import theme from '../../theme';
 import Text from '../Text';
+import { getDisplayNumber } from '../../utils/textFormatting';
 
 const styles = StyleSheet.create({
   logo: {
@@ -44,16 +45,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const getDisplayNumber = (number) => {
-  if (number >= 1000) {
-    return +(number / 1000).toFixed(1) + 'k';
-  }
-  return number;
-};
-
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="repositoryItem">
       <View style={styles.main}>
         <Image
           style={styles.logo}
@@ -83,21 +77,27 @@ const RepositoryItem = ({ item }) => {
       </View>
       <View style={styles.details}>
         <View style={styles.detailItem}>
-          <Text fontWeight="bold">
+          <Text testID="stargazersCount" fontWeight="bold">
             {getDisplayNumber(item.stargazersCount)}
           </Text>
           <Text>Stars</Text>
         </View>
         <View style={styles.detailItem}>
-          <Text fontWeight="bold">{getDisplayNumber(item.forksCount)}</Text>
+          <Text testID="forksCount" fontWeight="bold">
+            {getDisplayNumber(item.forksCount)}
+          </Text>
           <Text>Forks</Text>
         </View>
         <View style={styles.detailItem}>
-          <Text fontWeight="bold">{getDisplayNumber(item.reviewCount)}</Text>
+          <Text testID="reviewCount" fontWeight="bold">
+            {getDisplayNumber(item.reviewCount)}
+          </Text>
           <Text>Reviews</Text>
         </View>
         <View style={styles.detailItem}>
-          <Text fontWeight="bold">{getDisplayNumber(item.ratingAverage)}</Text>
+          <Text testID="ratingAverage" fontWeight="bold">
+            {getDisplayNumber(item.ratingAverage)}
+          </Text>
           <Text>Rating</Text>
         </View>
       </View>
