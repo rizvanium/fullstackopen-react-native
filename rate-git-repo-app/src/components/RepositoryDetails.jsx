@@ -5,6 +5,7 @@ import RepositoryItem from './RepositoryList/RepositoryItem';
 import Text from './Text';
 import theme from '../theme';
 import { useParams } from 'react-router-native';
+import PrimaryButton from './PrimaryButton';
 
 const styles = StyleSheet.create({
   button: {
@@ -40,11 +41,7 @@ const RepositoryDetails = () => {
   return (
     <View>
       <RepositoryItem item={data.repository} />
-      <Pressable>
-        <Text color="white" fontWeight="bold">
-          Open in Github
-        </Text>
-      </Pressable>
+      <PrimaryButton text="Open in Github" />
     </View>
   );
 };
