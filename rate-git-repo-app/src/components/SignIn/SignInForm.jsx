@@ -8,13 +8,6 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'white',
   },
-  inputBase: {
-    height: 50,
-    margin: 8,
-    padding: 10,
-    fontSize: theme.fontSizes.heading,
-    borderRadius: 4,
-  },
   input: {
     borderWidth: 2,
     color: theme.colors.textSecondary,
@@ -28,14 +21,14 @@ const SignInForm = ({ onSubmit }) => {
       <FormikTextInput
         name="username"
         placeholder="Enter username"
-        style={{ ...styles.input, ...styles.inputBase }}
+        style={{ ...styles.input, ...theme.input }}
         testID="sign-in-username"
       />
       <FormikTextInput
         name="password"
         placeholder="Enter password"
         secureTextEntry
-        style={{ ...styles.input, ...styles.inputBase }}
+        style={{ ...styles.input, ...theme.input }}
         testID="sign-in-password"
       />
       <PrimaryButton

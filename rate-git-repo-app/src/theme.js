@@ -1,5 +1,11 @@
 import { Platform } from 'react-native';
 
+const fontSizes = {
+  body: 14,
+  subheading: 16,
+  heading: 18,
+};
+
 const theme = {
   colors: {
     primary: '#0366d6',
@@ -11,11 +17,7 @@ const theme = {
     textTernary: '#ffffff',
     error: '#d73a4a',
   },
-  fontSizes: {
-    body: 14,
-    subheading: 16,
-    heading: 18,
-  },
+  fontSizes,
   fonts: {
     main: Platform.select({
       android: 'Roboto',
@@ -26,6 +28,13 @@ const theme = {
   fontWeights: {
     normal: '400',
     bold: '700',
+  },
+  input: {
+    height: 50,
+    margin: 8,
+    padding: 10,
+    borderRadius: 4,
+    fontSize: fontSizes.heading,
   },
 };
 
