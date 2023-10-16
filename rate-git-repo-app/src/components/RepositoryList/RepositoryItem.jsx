@@ -1,7 +1,9 @@
 import { View, Image, StyleSheet } from 'react-native';
-import theme from '../../theme';
-import Text from '../Text';
 import { getDisplayNumber } from '../../utils/textFormatting';
+import * as Linking from 'expo-linking';
+import Text from '../Text';
+import PrimaryButton from '../PrimaryButton';
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   logo: {
@@ -41,11 +43,11 @@ const styles = StyleSheet.create({
     paddingRight: 6,
     paddingLeft: 6,
     alignSelf: 'flex-start',
-    marginBottom: 15,
+    marginBottom: 16,
   },
 });
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, showDetails = false }) => {
   return (
     <View style={styles.container} testID="repositoryItem">
       <View style={styles.main}>
@@ -101,6 +103,13 @@ const RepositoryItem = ({ item }) => {
           <Text>Rating</Text>
         </View>
       </View>
+      {showDetails && (
+        <PrimaryButton
+          style={{ marginBottom: 0, marginTop: 16 }}
+          text="Open in Github"
+          onPress={() => Linking.openURL(item.url)}
+        />
+      )}
     </View>
   );
 };

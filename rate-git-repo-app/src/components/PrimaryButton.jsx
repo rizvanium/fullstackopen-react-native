@@ -11,14 +11,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const PrimaryButton = ({ text, onPress, ...props }) => {
+const PrimaryButton = ({ text, onPress, style, ...props }) => {
   return (
     <Pressable onPress={onPress} {...props}>
       <Text
         fontSize="heading"
         fontWeight="bold"
         color="white"
-        style={{ ...theme.input, ...styles.button }}
+        style={[{ ...theme.input, ...styles.button }, style]}
       >
         {text}
       </Text>
