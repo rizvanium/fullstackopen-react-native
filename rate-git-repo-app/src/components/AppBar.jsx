@@ -49,6 +49,7 @@ const AppBar = () => {
         {loading || error || !data?.me?.id ? (
           <>
             <AppBarTab name="Sign in" to="/signin" />
+            <AppBarTab name="Sign up" to="/signup" />
           </>
         ) : (
           <>
