@@ -23,28 +23,28 @@ export const RepositoryListContainer = ({
     : [];
 
   return (
-    <>
-      <Picker
-        selectedValue={sortedBy}
-        onValueChange={(value, itemIndex) => selectSortedBy(value)}
-      >
-        <Picker.Item label="Latest repositories" value={SORT_BY.CREATED_AT} />
-        <Picker.Item
-          label="Highest rated repositories"
-          value={SORT_BY.RATING_AVERAGE_DESC}
-        />
-        <Picker.Item
-          label="Lowest rated repositories"
-          value={SORT_BY.RATING_AVERAGE_ASC}
-        />
-      </Picker>
-      <FlatList
-        data={repositoryNodes}
-        ItemSeparatorComponent={ItemSeparator}
-        renderItem={PressableRepositoryItem}
-        keyExtractor={(item) => item.id}
-      />
-    </>
+    <FlatList
+      data={repositoryNodes}
+      ItemSeparatorComponent={ItemSeparator}
+      renderItem={PressableRepositoryItem}
+      keyExtractor={(item) => item.id}
+      ListHeaderComponent={() => (
+        <Picker
+          selectedValue={sortedBy}
+          onValueChange={(value, itemIndex) => selectSortedBy(value)}
+        >
+          <Picker.Item label="Latest repositories" value={SORT_BY.CREATED_AT} />
+          <Picker.Item
+            label="Highest rated repositories"
+            value={SORT_BY.RATING_AVERAGE_DESC}
+          />
+          <Picker.Item
+            label="Lowest rated repositories"
+            value={SORT_BY.RATING_AVERAGE_ASC}
+          />
+        </Picker>
+      )}
+    />
   );
 };
 
