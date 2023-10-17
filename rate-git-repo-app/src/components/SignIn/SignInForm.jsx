@@ -4,10 +4,6 @@ import theme from '../../theme';
 import PrimaryButton from '../PrimaryButton';
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    backgroundColor: 'white',
-  },
   input: {
     borderWidth: 2,
     color: theme.colors.textSecondary,
@@ -17,7 +13,7 @@ const styles = StyleSheet.create({
 
 const SignInForm = ({ onSubmit }) => {
   return (
-    <View style={styles.container}>
+    <View style={theme.content}>
       <FormikTextInput
         name="username"
         placeholder="Enter username"
