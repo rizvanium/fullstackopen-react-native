@@ -1,14 +1,19 @@
 import { useNavigate } from 'react-router-native';
 import ReviewFormContainer from './ReviewFormContainer';
-import theme from '../../theme';
+import useCreateReview from '../../hooks/useCreateReview';
 
 const NewReview = () => {
   const navigate = useNavigate();
-
+  const [create] = useCreateReview();
   const onSubmit = async (values) => {
     const { owner, name, rating, review } = values;
     try {
-      console.log('submitted:', owner, name, rating, review);
+      const {
+        data: {
+          createReview: { repositoryId },
+        },
+      } = await create({ owner, name, rating: +rating, review });
+      navigate(`/repository/${repositoryId}`);
     } catch (error) {
       console.log('SignIn error block');
       console.log(error);

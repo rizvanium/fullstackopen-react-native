@@ -33,6 +33,7 @@ const ReviewForm = ({ onSubmit }) => {
         testID="review-rating"
       />
       <FormikTextInput
+        multiline
         name="review"
         placeholder="Review"
         style={{ ...styles.input, ...theme.input }}
