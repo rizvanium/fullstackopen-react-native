@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   main: {
-    display: 'flex',
+    flex: 1,
     flexDirection: 'row',
   },
   mainItem: {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ item, showDetails = false }) => {
   return (
-    <View style={theme.content} testID="repositoryItem">
+    <View style={[theme.content, { flex: 1 }]} testID="repositoryItem">
       <View style={styles.main}>
         <Image
           style={styles.logo}
@@ -57,16 +57,16 @@ const RepositoryItem = ({ item, showDetails = false }) => {
             uri: item.ownerAvatarUrl,
           }}
         />
-        <View style={{ marginLeft: 20 }}>
+        <View style={{ marginLeft: 20, flex: 1 }}>
           <Text
-            style={[styles.mainItem, { marginBottom: 7 }]}
+            style={[styles.mainItem, { marginBottom: 7, marginTop: -6 }]}
             fontWeight="bold"
             fontSize="heading"
           >
             {item.fullName}
           </Text>
           <Text
-            style={[styles.mainItem, { marginBottom: 9 }]}
+            style={[styles.mainItem, { marginBottom: 9, flexWrap: 'wrap' }]}
             color="textSecondary"
             fontSize="subHeading"
           >

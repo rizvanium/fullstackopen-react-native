@@ -10,7 +10,6 @@ import NewReview from './NewReview';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexGrow: 1,
     flexShrink: 1,
     backgroundColor: theme.colors.light,

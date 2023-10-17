@@ -32,7 +32,7 @@ const Review = ({ item }) => {
           {item.rating}
         </Text>
       </View>
-      <View>
+      <View style={{ flex: 1 }}>
         <Text fontSize="subheading" fontWeight="bold">
           {item.user.username}
         </Text>
