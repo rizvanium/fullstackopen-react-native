@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import RepositoryListContainer from './RepositoryListContainer';
 import useRepositories from '../../hooks/useRepositories';
 import Text from '../Text';
-
+import { SORTING_CONFIG, SORT_BY } from '../../constants';
 const styles = StyleSheet.create({
   indicator: {
     flex: 1,
@@ -11,7 +12,10 @@ const styles = StyleSheet.create({
 });
 
 const RepositoryList = () => {
-  const { repositories, loading, error } = useRepositories();
+  const [sortedBy, setSortedBy] = useState(SORT_BY.CREATED_AT);
+  const { repositories, loading, error } = useRepositories(
+    SORTING_CONFIG[sortedBy]
+  );
 
   if (loading) {
     return (
@@ -29,7 +33,13 @@ const RepositoryList = () => {
     );
   }
 
-  return <RepositoryListContainer repositories={repositories} />;
+  return (
+    <RepositoryListContainer
+      repositories={repositories}
+      sortedBy={sortedBy}
+      selectSortedBy={setSortedBy}
+    />
+  );
 };
 
 export default RepositoryList;
