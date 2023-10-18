@@ -38,8 +38,10 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.8",
+    "react-native-paper": "^5.11.0",
     "react-native-web": "~0.18.9",
     "react-router-native": "^6.16.0",
+    "use-debounce": "^9.0.4",
     "yup": "^1.3.2"
   },
   "devDependencies": {

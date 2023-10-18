@@ -4,6 +4,7 @@ import RepositoryListContainer from './RepositoryListContainer';
 import useRepositories from '../../hooks/useRepositories';
 import Text from '../Text';
 import { SORTING_CONFIG, SORT_BY } from '../../constants';
+import { useDebounce } from 'use-debounce';
 const styles = StyleSheet.create({
   indicator: {
     flex: 1,
@@ -12,8 +13,11 @@ const styles = StyleSheet.create({
 });
 
 const RepositoryList = () => {
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [searchKeywordValue] = useDebounce(searchKeyword, 500);
   const [sortedBy, setSortedBy] = useState(SORT_BY.CREATED_AT);
   const { repositories, loading, error } = useRepositories(
+    searchKeywordValue,
     SORTING_CONFIG[sortedBy]
   );
 
@@ -38,6 +42,8 @@ const RepositoryList = () => {
       repositories={repositories}
       sortedBy={sortedBy}
       selectSortedBy={setSortedBy}
+      searchKeyword={searchKeyword}
+      setSearchKeyword={setSearchKeyword}
     />
   );
 };
