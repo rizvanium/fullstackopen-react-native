@@ -42,23 +42,27 @@ const AppBar = () => {
       client.resetStore();
     });
 
+  const signedIn = () => {
+    return !loading && !error && data?.me?.id;
+  };
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
         <AppBarTab name="Repositories" to="/" />
-        {loading || error || !data?.me?.id ? (
-          <>
-            <AppBarTab name="Sign in" to="/signin" />
-            <AppBarTab name="Sign up" to="/signup" />
-          </>
-        ) : (
+        {signedIn() ? (
           <>
             <AppBarTab name="Create a review" to="/new-review" />
+            <AppBarTab name="My reviews" to="/reviews" />
             <AppBarTab
               name="Sign out"
               style={styles.warning}
               onPress={logout}
             />
+          </>
+        ) : (
+          <>
+            <AppBarTab name="Sign in" to="/signin" />
+            <AppBarTab name="Sign up" to="/signup" />
           </>
         )}
       </ScrollView>
