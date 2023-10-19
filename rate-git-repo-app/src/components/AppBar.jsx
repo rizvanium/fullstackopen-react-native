@@ -5,6 +5,7 @@ import theme from '../theme';
 import { useApolloClient, useQuery } from '@apollo/client';
 import { ME } from '../graphql/queries';
 import { useAuthStorage } from '../hooks/useAuthStorage';
+import createAlert from '../utils/createAlert';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,16 +21,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.error,
   },
 });
-
-const createAlert = (title, message, handleConfirmation) =>
-  Alert.alert(title, message, [
-    {
-      text: 'No',
-      onPress: () => {},
-      style: 'cancel',
-    },
-    { text: 'Yes', onPress: () => handleConfirmation() },
-  ]);
 
 const AppBar = () => {
   const client = useApolloClient();
