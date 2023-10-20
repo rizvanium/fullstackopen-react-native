@@ -21,6 +21,7 @@ const RepositoryListContainer = ({
   selectSortedBy,
   searchKeyword,
   setSearchKeyword,
+  onEndReach,
 }) => {
   const onChangeSearch = (query) => setSearchKeyword(query);
 
@@ -34,6 +35,8 @@ const RepositoryListContainer = ({
       ItemSeparatorComponent={ItemSeparator}
       renderItem={PressableRepositoryItem}
       keyExtractor={(item) => item.id}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
       ListHeaderComponent={
         <View style={{ margin: 16, marginBottom: 0 }}>
           <Searchbar

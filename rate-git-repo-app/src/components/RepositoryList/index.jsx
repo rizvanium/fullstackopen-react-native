@@ -16,7 +16,7 @@ const RepositoryList = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [searchKeywordValue] = useDebounce(searchKeyword, 500);
   const [sortedBy, setSortedBy] = useState(SORT_BY.CREATED_AT);
-  const { repositories, loading, error } = useRepositories(
+  const { repositories, fetchMore, loading, error } = useRepositories(
     searchKeywordValue,
     SORTING_CONFIG[sortedBy]
   );
@@ -37,6 +37,10 @@ const RepositoryList = () => {
     );
   }
 
+  const onEndReach = () => {
+    fetchMore();
+  };
+
   return (
     <RepositoryListContainer
       repositories={repositories}
@@ -44,6 +48,7 @@ const RepositoryList = () => {
       selectSortedBy={setSortedBy}
       searchKeyword={searchKeyword}
       setSearchKeyword={setSearchKeyword}
+      onEndReach={onEndReach}
     />
   );
 };
