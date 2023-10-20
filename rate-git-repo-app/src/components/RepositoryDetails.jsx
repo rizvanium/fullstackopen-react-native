@@ -19,10 +19,26 @@ const RepositoryInfo = ({ item }) => {
 const RepositoryDetails = () => {
   let { id } = useParams();
 
-  const { data, loading, error } = useQuery(GET_REPOSITORY, {
+  const { data, fetchMore, loading, error } = useQuery(GET_REPOSITORY, {
     fetchPolicy: 'cache-and-network',
-    variables: { repositoryId: id },
+    variables: { repositoryId: id, first: 4 },
   });
+
+  const handleFetchMore = () => {
+    const canFetchMore =
+      !loading && !error && data?.repository.reviews.pageInfo.hasNextPage;
+
+    if (!canFetchMore) {
+      return;
+    }
+    fetchMore({
+      variables: {
+        repositoryId: id,
+        first: 2,
+        after: data.repository.reviews.pageInfo.endCursor,
+      },
+    });
+  };
 
   if (loading) {
     return (
@@ -51,6 +67,8 @@ const RepositoryDetails = () => {
         renderItem={Review}
         ItemSeparatorComponent={ItemSeparator}
         keyExtractor={(item) => item.id}
+        onEndReached={handleFetchMore}
+        onEndReachedThreshold={0.5}
         ListHeaderComponent={() => <RepositoryInfo item={data.repository} />}
       />
     </View>
